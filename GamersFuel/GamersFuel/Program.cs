@@ -6,41 +6,50 @@ namespace GamersFuel
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             string response;
             var menuList = new List<string>();
+            string fileContents;
+            string[] menuArray;
+            string customerOrder;
+            Menu myObj = new Menu();
+
+            Console.WriteLine("What do you want?");
             do
             {
                 using (var reader = new StreamReader("Menu.txt"))
                 {
-                    string fileContents;
                     while ((fileContents = reader.ReadLine()) != null)
                     {
                         menuList.Add(fileContents);
-                        string[] menuArray = menuList.ToArray();
+                        menuArray = menuList.ToArray();
                         menuArray = fileContents.Split('|');
-                        Console.WriteLine(menuArray[2]);
+                        myObj.Price = menuArray[3];
+
                     }
 
+
                 }
-                Console.WriteLine("Would you like to order more? (y/n)");
+
+                customerOrder = Console.ReadLine().ToLower();
+                if (customerOrder == "1")
+                {
+                    Console.WriteLine("You ordered: {Noob Tears}");
+                    Console.WriteLine("Your price is {$4.99}. Would you like anything else");
+                }
+                Console.WriteLine("Would you like anything else? (y/n)");
                 response = Console.ReadLine().ToLower();
             } while (response == "y");
 
 
-            //Console.WriteLine("What do you want?");
-            //var response = Console.ReadLine().ToLower();
-            //if (response == "n")
-            //{
-            //    Console.WriteLine(arrayMenu[0]);
-            //}
 
-            //Menu myObj = new Menu();
-            //myObj.Name = arrayMenu[0];
-            //myObj.Category = arrayMenu[1];
-            //Console.WriteLine(myObj.Name);
-            //Console.WriteLine(myObj.Category);
+
+
+
+
         }
+
     }
 }

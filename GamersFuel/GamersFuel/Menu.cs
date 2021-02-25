@@ -19,6 +19,11 @@ namespace GamersFuel
 
         }
 
+        public static double Total(double price)
+        {
+            return price + price;
+        }
+
         
     }
 }
