@@ -10,35 +10,37 @@ namespace GamersFuel
         static void Main(string[] args)
         {
             string response;
-            var menuList = new List<string>();
-            string fileContents;
-            string[] menuArray;
-            string customerOrder;
-            Menu myObj = new Menu();
-
+            var menuList = new List<Menu>();
             Console.WriteLine("What do you want?");
             do
             {
                 using (var reader = new StreamReader("Menu.txt"))
                 {
-                    while ((fileContents = reader.ReadLine()) != null)
+                    while (!reader.EndOfStream)
                     {
-                        menuList.Add(fileContents);
-                        menuArray = menuList.ToArray();
-                        menuArray = fileContents.Split('|');
-                        myObj.Price = menuArray[3];
-
+                        var line = reader.ReadLine();
+                        var parts = line.Split('|');
+                        var menu = new Menu
+                        {
+                            MenuNumber = parts[0],
+                            Name = parts[1],
+                            Category = parts[2],
+                            Description = parts[3],
+                            Price = parts[4]
+                        };
+                        menuList.Add(menu);
                     }
-
-
                 }
-
-                customerOrder = Console.ReadLine().ToLower();
-                if (customerOrder == "1")
+                foreach (var item in menuList)
                 {
-                    Console.WriteLine("You ordered: {Noob Tears}");
-                    Console.WriteLine("Your price is {$4.99}. Would you like anything else");
+                    Console.WriteLine(item);
                 }
+                //var customerOrder = Console.ReadLine().ToLower();
+                //if (customerOrder == "1")
+                //{
+                //    Console.WriteLine($"You ordered: {newMenu[0]}");
+                //    Console.WriteLine("Your price is {$4.99}. Would you like anything else");
+                //}
                 Console.WriteLine("Would you like anything else? (y/n)");
                 response = Console.ReadLine().ToLower();
             } while (response == "y");
