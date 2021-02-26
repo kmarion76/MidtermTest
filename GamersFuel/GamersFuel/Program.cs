@@ -11,10 +11,13 @@ namespace GamersFuel
         {
             var database = new Database();
             database.LoadMenu();
-            var menu = database.Get("2");
-            Console.WriteLine(menu);
+            //var menu = Console.ReadLine();
+            //Console.WriteLine(database.Get(menu));
+
             //string response;
-            //Console.WriteLine("Welcome to Gamers Fuel Coffee Shop!");
+            Console.WriteLine("Welcome to Gamers Fuel Coffee Shop!");
+            Console.WriteLine("Here's our menu:");
+            database.Print();
             //do
             //{
             //    var customerOrder = Console.ReadLine().ToLower();

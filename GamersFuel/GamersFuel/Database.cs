@@ -35,10 +35,21 @@ namespace GamersFuel
             {
                 if (item.MenuNumber == number)
                 {
+                    Console.WriteLine(item.Name);
                     return item;
                 }
             }
             return null;
+        }
+
+        public void Print()
+        {
+            foreach (var item in _products)
+            {
+                Console.WriteLine($"{item.MenuNumber} - {item.Name} | {item.Category} | {item.Description} | ${item.Price}");
+
+            }
+
         }
     }
 }
