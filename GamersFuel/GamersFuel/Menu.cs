@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace GamersFuel
@@ -25,6 +26,5 @@ namespace GamersFuel
             return price + price;
         }
 
-        
     }
 }
