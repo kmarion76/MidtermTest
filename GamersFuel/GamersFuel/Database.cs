@@ -35,8 +35,7 @@ namespace GamersFuel
             {
                 if (item.MenuNumber == number)
                 {
-                    Console.WriteLine(item.Name);
-                    return item;
+                    Console.WriteLine($"{item.Name} - {item.Price}");
                 }
             }
             return null;
@@ -46,8 +45,9 @@ namespace GamersFuel
         {
             foreach (var item in _products)
             {
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine($"{item.MenuNumber} - {item.Name} | {item.Category} | {item.Description} | ${item.Price}");
-
+                Console.ResetColor();
             }
 
         }
