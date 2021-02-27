@@ -12,7 +12,6 @@ namespace GamersFuel
             var database = new Database();
             database.LoadMenu();
 
-
             //string response;
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Welcome to Gamers Fuel Coffee Shop!" + "\n");
@@ -20,7 +19,6 @@ namespace GamersFuel
             database.Print();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\n" + "What would you like? (Please enter a menu number: )");
-            //Console.WriteLine(database.Get(menuChoice));
             Menu.UserChoice();
 
 
@@ -37,25 +35,6 @@ namespace GamersFuel
 
             //} while (response == "y");
 
-
-
-
-
-
-
         }
-        //public void UserChoice()
-        //{
-        //    List<Menu> menuInput = new List<Menu>();
-        //    var getMenu = new Database();
-        //    var menuChoice = Console.ReadLine();
-        //    menuInput.Add(getMenu.Get(menuChoice));
-        //    menuChoice.Split('-');
-        //    foreach (var item in menuInput)
-        //    {
-        //        Console.WriteLine(item + ",");
-                
-        //    }
-        //}
     }
 }

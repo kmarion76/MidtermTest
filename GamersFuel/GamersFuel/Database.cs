@@ -36,7 +36,9 @@ namespace GamersFuel
             {
                 if (item.MenuNumber == number)
                 {
-                    Console.WriteLine($"{item.Name} - ${item.Price}");
+                    Console.WriteLine($"Got it. You ordered: {item.Name}!");
+                    var Total = new Menu();
+                    
                 }
             }
             return null;

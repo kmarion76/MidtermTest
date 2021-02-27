@@ -27,11 +27,10 @@ namespace GamersFuel
             getMenu.LoadMenu();
             var menuChoice = Console.ReadLine();
             menuInput.Add(getMenu.Get(menuChoice));
-            menuChoice.Split('-');
-            foreach (var item in menuInput)
-            {
-                Console.WriteLine(item);
-            }
+            //foreach (var item in menuInput)
+            //{
+            //    Console.WriteLine(item);
+            //}
         }
 
 
