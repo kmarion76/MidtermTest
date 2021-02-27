@@ -11,6 +11,7 @@ namespace GamersFuel
 
         public void LoadMenu()
         {
+
             using (var reader = new StreamReader("Menu.txt"))
             {
                 while (!reader.EndOfStream)
@@ -35,7 +36,7 @@ namespace GamersFuel
             {
                 if (item.MenuNumber == number)
                 {
-                    Console.WriteLine($"{item.Name} - {item.Price}");
+                    Console.WriteLine($"{item.Name} - ${item.Price}");
                 }
             }
             return null;

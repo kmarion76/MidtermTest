@@ -20,11 +20,20 @@ namespace GamersFuel
         {
 
         }
-
-        public static double Total(double price)
+        public static void UserChoice()
         {
-            return price + price;
+            List<Menu> menuInput = new List<Menu>();
+            var getMenu = new Database();
+            getMenu.LoadMenu();
+            var menuChoice = Console.ReadLine();
+            menuInput.Add(getMenu.Get(menuChoice));
+            menuChoice.Split('-');
+            foreach (var item in menuInput)
+            {
+                Console.WriteLine(item);
+            }
         }
+
 
     }
 }
