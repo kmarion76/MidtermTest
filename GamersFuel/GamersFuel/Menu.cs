@@ -20,19 +20,65 @@ namespace GamersFuel
         {
 
         }
-        public static void UserChoice()
+        public List<int> UserChoice()
         {
-            List<Menu> menuInput = new List<Menu>();
-            var getMenu = new Database();
-            getMenu.LoadMenu();
-            var menuChoice = Console.ReadLine();
-            menuInput.Add(getMenu.Get(menuChoice));
-            //foreach (var item in menuInput)
+            List<int> menuInput = new List<int>();
+            //var getMenu = new Database();
+            //getMenu.LoadMenu();
+            Menu getPrice = new Menu();
+            int result;
+            do
+            {
+                var menuChoice = Console.ReadLine();
+
+                while (!int.TryParse(menuChoice, out result))
+                {
+                    Console.WriteLine("Please pick a valid menu option!");
+                    menuChoice = Console.ReadLine();
+                }
+                if (result <= 12 && result != 0)
+                {
+                    menuInput.Add(result);
+                    Console.WriteLine($"Got it! You wanted the number {result}.");
+                    getPrice.GetPrice(); // New
+                }
+                else
+                {
+                    Console.WriteLine("Please pick a valid menu option!");
+
+                }
+            } while (result > 12 || result == 0);
+
+
+            return menuInput;
+
+            //List<Menu> menuInput = new List<Menu>();
+            //var getMenu = new Database();
+            //getMenu.LoadMenu();
+            //var menuChoice = Console.ReadLine();
+            //while (!double.TryParse(menuChoice, out double result))
             //{
-            //    Console.WriteLine(item);
+            //    Console.WriteLine("Please pick a number!");
+            //    menuChoice = Console.ReadLine();
             //}
+            //menuInput.Add(getMenu.Get(menuChoice));
         }
 
+        public List<string> GetPrice()
+        {
+            Database getMenu = new Database();
+            Menu choice = new Menu();
+            var getChoice = choice.UserChoice();
+            getMenu.LoadMenu();
+
+            if (getChoice.Contains(0))
+            {
+                Console.WriteLine($"Your total: {MenuNumber}");
+                
+            }
+
+            return null;
+        }
 
     }
 }

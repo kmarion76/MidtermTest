@@ -32,13 +32,17 @@ namespace GamersFuel
 
         public Menu Get(string number)
         {
+            //Menu total = new Menu();
+            //Database loadMenu = new Database();
+            //loadMenu.LoadMenu();
+            //Menu.UserChoice();
             foreach (var item in _products)
             {
                 if (item.MenuNumber == number)
                 {
-                    Console.WriteLine($"Got it. You ordered: {item.Name}!");
-                    var Total = new Menu();
-                    
+                    Console.WriteLine($"Got it! You ordered: {item.Name}.");
+                    Menu total = new Menu();
+                    //Menu.UserChoice(total.Add($"{item.Price}"));
                 }
             }
             return null;

@@ -10,31 +10,17 @@ namespace GamersFuel
         static void Main(string[] args)
         {
             var database = new Database();
+            Menu getMenu = new Menu();
             database.LoadMenu();
 
-            //string response;
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Welcome to Gamers Fuel Coffee Shop!" + "\n");
             Console.WriteLine("Here's our menu:" + "\n");
             database.Print();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("\n" + "What would you like? (Please enter a menu number: )");
-            Menu.UserChoice();
-
-
-            //do
-            //{
-            //    var customerOrder = Console.ReadLine().ToLower();
-            //    if (customerOrder == "1")
-            //    {
-            //        Console.WriteLine($"You ordered: test");
-            //        Console.WriteLine("Your price is {$4.99}. Would you like anything else");
-            //    }
-            //    Console.WriteLine("Would you like anything else? (y/n)");
-            //    response = Console.ReadLine().ToLower();
-
-            //} while (response == "y");
-
+            Console.Write("\n" + "What would you like? (Please enter a menu number): ");
+            getMenu.UserChoice();
+            //was Menu.UserChoice();
         }
     }
 }
