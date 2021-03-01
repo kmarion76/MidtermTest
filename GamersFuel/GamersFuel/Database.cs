@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace GamersFuel
@@ -24,7 +25,7 @@ namespace GamersFuel
                         Name = parts[1],
                         Category = parts[2],
                         Description = parts[3],
-                        Price = parts[4]
+                        Price = double.Parse(parts[4])
                     });
                 }
             }
@@ -32,19 +33,19 @@ namespace GamersFuel
 
         public Menu Get(string number)
         {
-            //Menu total = new Menu();
-            //Database loadMenu = new Database();
-            //loadMenu.LoadMenu();
-            //Menu.UserChoice();
+            List<double> menuInput = new List<double>();
+
             foreach (var item in _products)
             {
                 if (item.MenuNumber == number)
                 {
                     Console.WriteLine($"Got it! You ordered: {item.Name}.");
-                    Menu total = new Menu();
-                    //Menu.UserChoice(total.Add($"{item.Price}"));
+                    menuInput.Add(item.Price);
+
+                    Console.WriteLine($"Your total is {menuInput[0]}");
                 }
             }
+            var sum = menuInput.Sum();
             return null;
         }
 
@@ -58,5 +59,6 @@ namespace GamersFuel
             }
 
         }
+
     }
 }
