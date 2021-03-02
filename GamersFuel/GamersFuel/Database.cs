@@ -10,6 +10,8 @@ namespace GamersFuel
     {
         private readonly List<Menu> _products = new List<Menu>();
 
+        private readonly List<Order> _orders = new List<Order>();
+
         public void LoadMenu()
         {
 
@@ -31,46 +33,13 @@ namespace GamersFuel
             }
         }
 
-        //public Menu Get(string userInput)
-        //{
-        //    List<double> menuInput = new List<double>();
-        //    var getMenu = new Database();
-        //    getMenu.LoadMenu();
-        //    int number = 0;
-        //    userInput = Console.ReadLine();
-        //    do
-        //    {
-        //        foreach (var item in _products)
-        //        {
-        //            while (!int.TryParse(userInput, out number))
-        //            {
-        //                Console.WriteLine("Please pick a number!");
-        //                userInput = Console.ReadLine();
-        //            }
-        //            if (item.MenuNumber == number || number <= 12 || number != 0)
-        //            {
-        //                Console.WriteLine($"Got it! You ordered: {item.Name}.");
-        //                menuInput.Add(item.Price);
-
-        //                Console.WriteLine($"Your total is {menuInput[0]}");
-        //            }
-        //            else
-        //            {
-        //                Console.WriteLine("Please pick a valid menu option!");
-        //                userInput = Console.ReadLine();
-        //            }
-        //        }
-        //    } while (number <= 12 && number != 0);
-
-        //    var sum = menuInput.Sum();
-        //    return null;
-        //}
-
         public void UserChoice()
         {
             var getMenu = new Database();
             getMenu.LoadMenu();
             int result;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
             var menuChoice = Console.ReadLine();
             do
             {
@@ -94,17 +63,24 @@ namespace GamersFuel
 
         public Menu Get(double number)
         {
-            List<double> menuInput = new List<double>();
+            Order getReceipt = new Order();
+            double total = 0;
             foreach (var item in _products)
             {
                 if (double.Parse(item.MenuNumber) == number)
                 {
                     Console.WriteLine($"You ordered the {item.Name}.");
-                    menuInput.Add(item.Price);
-                    Console.WriteLine($"Your total is ${menuInput[0]}");
+                    Console.WriteLine("How many of those would you like?");
+                    var quantity = (!int.TryParse(Console.ReadLine(), out int result));
+                    _orders.Add(new Order(item, result, item.Price));
                 }
             }
-            var sum = menuInput.Sum();
+            foreach (var item in _orders)
+            {
+                total += (item.MenuItem.Price) * (item.Quantity);
+            }
+            Console.WriteLine(total);
+
             return null;
         }
 
@@ -118,5 +94,7 @@ namespace GamersFuel
             }
 
         }
+
+
     }
 }
