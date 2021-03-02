@@ -19,7 +19,7 @@ namespace GamersFuel
             database.Print();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("\n" + "What would you like? (Please enter a menu number): ");
-            getMenu.UserChoice();
+            database.UserChoice();
             //was Menu.UserChoice();
 
         }
