@@ -13,12 +13,12 @@ namespace GamersFuel
 
         public static void getPayment(double total)
         {
-            Console.WriteLine("Total: $" + total);
+            Console.WriteLine("Total: $" + Math.Round(total, 2));
             Console.WriteLine("Payment method: cash");
-            Console.WriteLine("Cash received: ");
-            double userCash = int.Parse(Console.ReadLine());
+            Console.WriteLine("Cash received: $");
+            double userCash = double.Parse(Console.ReadLine());
             double userChnage = userCash - total;
-            Console.WriteLine("Change due: " + userChnage);
+            Console.WriteLine("Change due: $" + Math.Round(userChnage, 2));
 
         }
     }

@@ -13,7 +13,7 @@ namespace GamersFuel
 
         public static void getPayment(double total)
         {
-            Console.WriteLine("Total: $" + total);
+            Console.WriteLine("Total: $" + Math.Round(total, 2));
             Console.WriteLine("Method of payment chosen: Check");
             Console.WriteLine("Enter check number");
             int checkNumber = int.Parse(Console.ReadLine());
