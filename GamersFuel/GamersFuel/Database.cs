@@ -63,8 +63,8 @@ namespace GamersFuel
 
         public Menu Get(double number)
         {
-            Order getReceipt = new Order();
-            double total = 0;
+            //Order getReceipt = new Order();
+            //double total = 0;
             foreach (var item in _products)
             {
                 if (double.Parse(item.MenuNumber) == number)
@@ -75,13 +75,20 @@ namespace GamersFuel
                     _orders.Add(new Order(item, result, item.Price));
                 }
             }
+  
+            return null;
+        }
+
+        public void Receipt()
+        {
+            double total = 0;
             foreach (var item in _orders)
             {
                 total += (item.MenuItem.Price) * (item.Quantity);
-            }
-            Console.WriteLine(total);
+                Console.WriteLine($"{item.MenuItem.Name} - x{item.Quantity} - {item.MenuItem.Price}");
 
-            return null;
+            }
+            Console.WriteLine($"Total cost: {Math.Round(total, 2)}");
         }
 
         public void Print()

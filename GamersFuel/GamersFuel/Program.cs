@@ -23,12 +23,16 @@ namespace GamersFuel
             string response;
             do
             {
+                bool isInvalid;
                 Console.ForegroundColor = ConsoleColor.Cyan;
-
                 Console.Write("Would you like to order more? (y/n): ");
-                Console.WriteLine();
                 response = Console.ReadLine().ToLower();
-                if (response == "y")
+                isInvalid = response != "y" && response != "n";
+                if (isInvalid)
+                {
+                    Console.Write("Please enter a valid selection ('y' or 'n')!" + "\n");
+                }
+                else if (response == "y")
                 {
                     database.Print();
                     Console.ForegroundColor = ConsoleColor.Cyan;
@@ -36,12 +40,18 @@ namespace GamersFuel
                     Console.Write("What menu number would you like? ");
                     database.UserChoice();
                 }
+                else if (response == "n")
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("Here's your receipt:");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    database.Receipt();
+                }
             } while (response == "y");
 
-            Order final = new Order();
-            final.FinalPrice();
-
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Thanks for visiting Gamers Fuel Coffee Shop!");
+
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GamersFuel
 {
-    public class Order : Menu
+    public class Order
     {
         public Menu MenuItem { get; set; }
 
@@ -12,14 +12,6 @@ namespace GamersFuel
 
         public double Cost { get; set; }
 
-        public string MenuNumber { get; set; }
-        public string Name { get; set; }
-
-        public string Category { get; set; }
-
-        public string Description { get; set; }
-
-        public double Price { get; set; }
         public Order(Menu menuItem, int quantity, double cost)
         {
             MenuItem = menuItem;
