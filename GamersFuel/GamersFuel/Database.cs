@@ -61,8 +61,8 @@ namespace GamersFuel
             } while (result > 12 || result <= 0);
         }
 
-        public Menu Get(double number)
-        {
+        public void Get(double number)
+        {  
             //Order getReceipt = new Order();
             //double total = 0;
             foreach (var item in _products)
@@ -76,7 +76,7 @@ namespace GamersFuel
                 }
             }
   
-            return null;
+           // return null;
         }
 
         public void Receipt()
@@ -99,9 +99,20 @@ namespace GamersFuel
                 Console.WriteLine($"{item.MenuNumber} - {item.Name} | {item.Category} | {item.Description} | ${item.Price}");
                 Console.ResetColor();
             }
-
         }
 
-
+        public void DisplayCart()
+        {
+            if (_orders != null)
+            {
+                Console.WriteLine();
+                foreach (var item in _orders)
+                {
+                    double total = item.Quantity * item.Cost;
+                    Console.WriteLine($"{item.MenuItem.Name} x {item.Quantity}: {total:C2}");
+                    //Console.WriteLine(total.ToString("C2"));
+                }
+            }
+        }
     }
 }
