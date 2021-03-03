@@ -11,7 +11,7 @@ namespace GamersFuel
 
         }
 
-        public static void getPayment(double total)
+        public static void GetPayment(double total)
         {
             Console.WriteLine("Total: $" + Math.Round(total, 2));
             Console.WriteLine("Payment method: cash");

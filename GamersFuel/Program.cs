@@ -25,7 +25,7 @@ namespace GamersFuel
             Console.WriteLine("Welcome to Gamers Fuel Coffee Shop!" + "\n");
             Console.WriteLine("Here's our menu:" + "\n");
 
-            //Call function to display menu
+            //Call method to display menu
             database.Print();
             Console.ForegroundColor = ConsoleColor.Cyan;
 
@@ -35,7 +35,7 @@ namespace GamersFuel
                 Console.WriteLine("\n" + "What would you like? (Please enter a menu number: )");
                 menuChoice = Console.ReadLine();
 
-                //Call function to match user's choice with price from that item
+                //Call method to match user's choice with price from that item
                 total += database.total(menuChoice);
 
                 menuInput.Add(database.Get(menuChoice));
@@ -46,6 +46,8 @@ namespace GamersFuel
                 //Ask if user wants anything else
                 if (userContinue.Equals("y", StringComparison.OrdinalIgnoreCase))
                 {
+                    database.Print();
+                    Console.WriteLine(string.Empty);
                     Console.WriteLine("What else would you like to order from the menU?");
                 }
             } while (userContinue.Equals("y", StringComparison.OrdinalIgnoreCase));
@@ -59,29 +61,35 @@ namespace GamersFuel
                 Console.WriteLine(item);
             }
 
+            Checkout(total);
 
-
-            Console.WriteLine("How would you like to pay? Cash, Credit or Check? ");
-
-            string userPayment = Console.ReadLine();
-            if (userPayment.Equals("Cash", StringComparison.OrdinalIgnoreCase))
-            {
-                Cash.getPayment(total * 1.06);
-            }
-            else if (userPayment.Equals("Credit", StringComparison.OrdinalIgnoreCase))
-            {
-                Credit.getPayment(total * 1.06);
-            }
-            else if (userPayment.Equals("Check", StringComparison.OrdinalIgnoreCase))
-            {
-                Check.getPayment(total * 1.06);
-            }
-            else
-            {
-                Console.WriteLine("Please enter a valid payment method");
-            }
         }
 
+        private static void Checkout(double total)
+        {
+            while (true)
+            {
+                Console.WriteLine("How would you like to pay? Cash, Credit or Check? ");
+
+                string userPayment = Console.ReadLine();
+                if (userPayment.Equals("Cash", StringComparison.OrdinalIgnoreCase))
+                {
+                    Cash.GetPayment(total * 1.06);
+                }
+                else if (userPayment.Equals("Credit", StringComparison.OrdinalIgnoreCase))
+                {
+                    Credit.GetPayment(total * 1.06);
+                }
+                else if (userPayment.Equals("Check", StringComparison.OrdinalIgnoreCase))
+                {
+                    Check.GetPayment(total * 1.06);
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid payment method");
+                }
+            }
+        }
 
     }
 }
