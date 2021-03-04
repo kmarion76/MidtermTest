@@ -9,7 +9,9 @@ namespace GamersFuel
 
         static void Main(string[] args)
         {
-            var database = new Database();
+
+            
+            Database database = new Database();
             database.LoadMenu();
 
 
@@ -36,10 +38,10 @@ namespace GamersFuel
             Console.ForegroundColor = ConsoleColor.White;
             database.Receipt();
             var total = database.GetSubtotal();
-            Checkout(total);
+            Payment paymentOption = Checkout(total);
 
             Console.WriteLine();
-            database.FinalReceipt();
+            database.FinalReceipt(paymentOption);
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Thanks for visiting Gamers Fuel Coffee Shop!");
@@ -78,44 +80,28 @@ namespace GamersFuel
 
             } while (true);
         }
-        private static void Checkout(double total)
+        private static Payment Checkout(double total)
         {
+            Payment payment = new Payment();
             Database getSubtotal = new Database();
             Console.WriteLine("How would you like to pay? Cash, Credit or Check? ");
             string userPayment = Console.ReadLine();
             switch (userPayment.ToLower())
             {
                 case "cash":
-                    Cash.GetPayment(total * 1.06);
+                    payment = Cash.GetPayment(total * 1.06);
                     break;
                 case "credit":
-                    Credit.GetPayment(total * 1.06);
+                    payment = Credit.GetPayment(total * 1.06);
                     break;
                 case "check":
-                    Check.GetPayment(total * 1.06);
+                    payment = Check.GetPayment(total * 1.06);
                     break;
                 default:
                     Console.WriteLine("Please enter a valid payment method");
                     break;
             }
-
-            //string userPayment = Console.ReadLine();
-            //if (userPayment.Equals("Cash", StringComparison.OrdinalIgnoreCase))
-            //{
-            //    Cash.GetPayment(total * 1.06);
-            //}
-            //else if (userPayment.Equals("Credit", StringComparison.OrdinalIgnoreCase))
-            //{
-            //    Credit.GetPayment(total * 1.06);
-            //}
-            //else if (userPayment.Equals("Check", StringComparison.OrdinalIgnoreCase))
-            //{
-            //    Check.GetPayment(total * 1.06);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Please enter a valid payment method");
-            //}
+            return payment;
 
         }
     }

@@ -6,14 +6,23 @@ namespace GamersFuel
 {
     class Credit : Payment
     {
-        public Credit()
-        {
+        public string CardNumber { get; set; }
 
+        public string CardDate { get; set; }
+
+        public string CardCVV { get; set; }
+
+        public Credit(string cardNumber, string cardDate, string cardCVV)
+        {
+            CardNumber = cardNumber;
+            CardDate = cardDate;
+            CardCVV = cardCVV;
+            Type = "Credit";
         }
 
-        public static void GetPayment(double total)
+        public static Credit GetPayment(double total)
         {
-            Console.WriteLine($"{total:C2}");
+            Console.WriteLine($"Grand Total: {total:C2}");
             Console.WriteLine("Payment method: Credit");
             Console.Write("Please enter card number: ");
             var cardNumber = Console.ReadLine();
@@ -24,7 +33,7 @@ namespace GamersFuel
                 Console.WriteLine("Please enter a card number!");
                 cardNumber = Console.ReadLine();
             }
-            Console.Write("Please enter expiration date: ");
+            Console.Write("Please enter expiration date: (mmyy)");
             var cardDate = Console.ReadLine();
             while (!int.TryParse(cardDate, out results))
             {
@@ -32,7 +41,7 @@ namespace GamersFuel
                 cardDate = Console.ReadLine();
             }
             Console.Write("Please enter CVV code: ");
-            string cardCVV = Console.ReadLine();
+            var cardCVV = Console.ReadLine();
             while (!int.TryParse(cardCVV, out results))
             {
                 Console.WriteLine("Please enter a valid CVV number!");
@@ -40,7 +49,7 @@ namespace GamersFuel
             }
             Console.WriteLine("...Approved!");
 
-
+            return new Credit(cardNumber, cardDate, cardCVV);
         }
     }
 }
