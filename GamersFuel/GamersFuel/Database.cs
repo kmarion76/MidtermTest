@@ -118,9 +118,8 @@ namespace GamersFuel
                 Console.WriteLine();
                 foreach (var item in _orders)
                 {
-                    double total = item.Quantity * item.Cost;
-                    Console.WriteLine($"{item.MenuItem.Name} x {item.Quantity}: {total:C2}");
-                    //Console.WriteLine(total.ToString("C2"));
+                    double total = item.Quantity * item.MenuItem.Price;
+                    Console.WriteLine($"In your cart: {item.MenuItem.Name} x {item.Quantity}: {total:C2}");
                 }
             }
         }
@@ -129,7 +128,7 @@ namespace GamersFuel
         {
             double total = 0;
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Here's your receipt:");
+            Console.WriteLine("Here's your final receipt:");
             Console.ForegroundColor = ConsoleColor.White;
             foreach (var item in _orders)
             {

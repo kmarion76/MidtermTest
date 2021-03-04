@@ -12,7 +12,6 @@ namespace GamersFuel
 
         public string CardCVV { get; set; }
 
-        public string Type { get; set; }
         public Credit(string cardNumber, string cardDate, string cardCVV)
         {
             CardNumber = cardNumber;
@@ -23,7 +22,7 @@ namespace GamersFuel
 
         public static Credit GetPayment(double total)
         {
-            Console.WriteLine($"{total:C2}");
+            Console.WriteLine($"Grand Total: {total:C2}");
             Console.WriteLine("Payment method: Credit");
             Console.Write("Please enter card number: ");
             var cardNumber = Console.ReadLine();

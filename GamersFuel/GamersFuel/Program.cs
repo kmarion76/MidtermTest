@@ -11,7 +11,8 @@ namespace GamersFuel
         {
 
             
-            var database = new Database();database.LoadMenu();
+            Database database = new Database();
+            database.LoadMenu();
 
 
             Console.ForegroundColor = ConsoleColor.Cyan;
