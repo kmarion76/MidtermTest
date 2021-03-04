@@ -63,8 +63,7 @@ namespace GamersFuel
 
         public void Get(double number)
         {  
-            //Order getReceipt = new Order();
-            //double total = 0;
+
             foreach (var item in _products)
             {
                 if (double.Parse(item.MenuNumber) == number)
@@ -72,11 +71,22 @@ namespace GamersFuel
                     Console.WriteLine($"You ordered the {item.Name}.");
                     Console.WriteLine("How many of those would you like?");
                     var quantity = (!int.TryParse(Console.ReadLine(), out int result));
-                    _orders.Add(new Order(item, result, item.Price));
+                    var itemTotal = result * item.Price;
+                    _orders.Add(new Order(item, result, itemTotal));
                 }
             }
   
-           // return null;
+        }
+
+        public double GetSubtotal()
+        {
+            double subtotal = 0;
+            foreach (var item in _orders)
+            {
+                subtotal = subtotal + item.Cost;
+            }
+
+            return subtotal;
         }
 
         public void Receipt()
@@ -88,7 +98,7 @@ namespace GamersFuel
                 Console.WriteLine($"{item.MenuItem.Name} - x{item.Quantity} - {item.MenuItem.Price}");
 
             }
-            Console.WriteLine($"Total cost: {Math.Round(total, 2)}");
+            Console.WriteLine($"Subtotal: {total:C2}");
         }
 
         public void Print()
@@ -113,6 +123,21 @@ namespace GamersFuel
                     //Console.WriteLine(total.ToString("C2"));
                 }
             }
+        }
+
+        public void FinalReceipt()
+        {
+            double total = 0;
+            foreach (var item in _orders)
+            {
+                total += (item.MenuItem.Price) * (item.Quantity);
+                Console.WriteLine($"{item.MenuItem.Name} - x{item.Quantity} - {item.MenuItem.Price}");
+
+            }
+            Console.WriteLine($"Total: {total:C2}");
+            Cash.GetPayment(total * 1.06);
+
+
         }
     }
 }
