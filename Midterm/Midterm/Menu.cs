@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Midterm1
+namespace amersFuel
 {
     public class Menu
     {

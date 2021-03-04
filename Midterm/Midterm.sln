@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.808.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Midterm1", "Midterm1\Midterm1.csproj", "{3DE1C6D2-7196-479A-94B1-746B0488AFDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Midterm", "Midterm1\Midterm.csproj", "{3DE1C6D2-7196-479A-94B1-746B0488AFDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
