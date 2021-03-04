@@ -6,12 +6,17 @@ namespace GamersFuel
 {
     class Check : Payment
     {
-        public Check()
-        {
+        public string CheckNumber { get; set; }
 
+        public string Type { get; set; }
+
+        public Check(string checkNumber)
+        {
+            CheckNumber = checkNumber;
+            Type = "Check";
         }
 
-        public static void GetPayment(double total)
+        public static Check GetPayment(double total)
         {
             Console.WriteLine($"{total:C2}");
             Console.WriteLine("Method of payment chosen: Check");
@@ -25,7 +30,7 @@ namespace GamersFuel
             }
             Console.WriteLine("Approved!");
 
-
+            return new Check(checkNumber);
         }
     }
 }

@@ -6,6 +6,7 @@ namespace GamersFuel
 {
     public class Payment
     {
+        public string Type { get; set; }
         public Payment()
         {
 

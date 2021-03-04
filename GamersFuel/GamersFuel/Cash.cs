@@ -4,22 +4,27 @@ using System.Text;
 
 namespace GamersFuel
 {
-    class Cash : Payment
+    public class Cash : Payment
     {
-        public Cash()
-        {
+        public string UserCash { get; set; }
 
+        public Cash(string userCash)
+        {
+            UserCash = userCash;
+            Type = "Cash";
         }
 
-        public static void GetPayment(double total)
+        public static Cash GetPayment(double total)
         {
-            Console.WriteLine($"{total:C2}");
+            Console.WriteLine($"Grand Total: {total:C2}");
             Console.WriteLine("Payment method: Cash");
             Console.Write("Cash received: $ ");
             var userCash = double.Parse(Console.ReadLine());
-            var userChnage = userCash - total;
-            Console.WriteLine($"Change due: $ {userChnage:C2}");
+            var userChange = userCash - total;
+            Console.WriteLine($"Change due: $ {userChange:C2}");
 
+            return new Cash(userCash.ToString());
         }
+
     }
 }

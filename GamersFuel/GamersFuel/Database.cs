@@ -125,17 +125,22 @@ namespace GamersFuel
             }
         }
 
-        public void FinalReceipt()
+        public void FinalReceipt(Payment payment)
         {
             double total = 0;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("Here's your receipt:");
+            Console.ForegroundColor = ConsoleColor.White;
             foreach (var item in _orders)
             {
                 total += (item.MenuItem.Price) * (item.Quantity);
                 Console.WriteLine($"{item.MenuItem.Name} - x{item.Quantity} - {item.MenuItem.Price}");
 
             }
-            Console.WriteLine($"Total: {total:C2}");
-            Cash.GetPayment(total * 1.06);
+            Console.WriteLine($"Subtotal: {total:C2}");
+            Console.WriteLine($"Grand Total: {total * 1.06:C2}");
+            Console.WriteLine($"You paid by: {payment.Type}");
+
 
 
         }
